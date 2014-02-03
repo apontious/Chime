@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Chime Frameworks/Chime Mac Framework/Chime Mac Framework.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Chime Test Apps/Chime Project Indexer/Chime Project Indexer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Chime Test Apps/chimesimpletester/chimesimpletester.xcodeproj">
+   </FileRef>
+</Workspace>

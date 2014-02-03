@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F437686189C274800B35086 /* ChooseSchemeEtcSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F437684189C274800B35086 /* ChooseSchemeEtcSheet.xib */; };
+		4F437689189C323600B35086 /* ChooseSchemeEtcSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F437688189C323600B35086 /* ChooseSchemeEtcSheetController.m */; };
+		4F4A6690189B039600695F64 /* IndexDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A668F189B039600695F64 /* IndexDocument.m */; };
+		4F4A6696189B03EF00695F64 /* IndexDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4A6698189B03EF00695F64 /* IndexDocument.xib */; };
+		4FA72FAD189A325E00AFD8B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA72FAC189A325E00AFD8B3 /* Cocoa.framework */; };
+		4FA72FCC189A325E00AFD8B3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA72FCB189A325E00AFD8B3 /* XCTest.framework */; };
+		4FA72FCD189A325E00AFD8B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA72FAC189A325E00AFD8B3 /* Cocoa.framework */; };
+		4FA72FD5189A325E00AFD8B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72FD3189A325E00AFD8B3 /* InfoPlist.strings */; };
+		4FA72FD7189A325E00AFD8B3 /* ChimeProjectIndexerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA72FD6189A325E00AFD8B3 /* ChimeProjectIndexerTests.m */; };
+		4FA72FE1189A32A100AFD8B3 /* Chime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA72FE0189A32A100AFD8B3 /* Chime.framework */; };
+		4FA72FE7189A34F400AFD8B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72FE5189A34F400AFD8B3 /* InfoPlist.strings */; };
+		4FA72FEA189A350B00AFD8B3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72FE8189A350B00AFD8B3 /* MainMenu.xib */; };
+		4FA72FEC189A352400AFD8B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72FEB189A352400AFD8B3 /* Images.xcassets */; };
+		4FA72FF1189A35A000AFD8B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA72FF0189A35A000AFD8B3 /* main.m */; };
+		4FA72FF4189A35BA00AFD8B3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72FF2189A35BA00AFD8B3 /* Credits.rtf */; };
+		4FA72FF8189A370600AFD8B3 /* Chime.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4FA72FE0189A32A100AFD8B3 /* Chime.framework */; };
+		4FD32104189CB42D00D59683 /* XcodebuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD32103189CB42D00D59683 /* XcodebuildTask.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FA72FCE189A325E00AFD8B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FA72FA1189A325E00AFD8B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FA72FA8189A325E00AFD8B3;
+			remoteInfo = ChimeTester;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4FA72FF5189A36C800AFD8B3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4FA72FF8189A370600AFD8B3 /* Chime.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4F437685189C274800B35086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ChooseSchemeEtcSheet.xib; sourceTree = "<group>"; };
+		4F437687189C323600B35086 /* ChooseSchemeEtcSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSchemeEtcSheetController.h; sourceTree = "<group>"; };
+		4F437688189C323600B35086 /* ChooseSchemeEtcSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSchemeEtcSheetController.m; sourceTree = "<group>"; };
+		4F4A668E189B039600695F64 /* IndexDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexDocument.h; sourceTree = "<group>"; };
+		4F4A668F189B039600695F64 /* IndexDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexDocument.m; sourceTree = "<group>"; };
+		4F4A6697189B03EF00695F64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/IndexDocument.xib; sourceTree = "<group>"; };
+		4FA72FA9189A325E00AFD8B3 /* Chime Project Indexer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chime Project Indexer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA72FAC189A325E00AFD8B3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4FA72FAF189A325E00AFD8B3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4FA72FB0189A325E00AFD8B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4FA72FB1189A325E00AFD8B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4FA72FB4189A325E00AFD8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4FA72FBA189A325E00AFD8B3 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		4FA72FCA189A325E00AFD8B3 /* Chime Project Indexer Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chime Project Indexer Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA72FCB189A325E00AFD8B3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4FA72FD2189A325E00AFD8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FA72FD4189A325E00AFD8B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FA72FD6189A325E00AFD8B3 /* ChimeProjectIndexerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChimeProjectIndexerTests.m; sourceTree = "<group>"; };
+		4FA72FE0189A32A100AFD8B3 /* Chime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FA72FE6189A34F400AFD8B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FA72FE9189A350B00AFD8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4FA72FEB189A352400AFD8B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4FA72FF0189A35A000AFD8B3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FA72FF3189A35BA00AFD8B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		4FD32102189CB42D00D59683 /* XcodebuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodebuildTask.h; sourceTree = "<group>"; };
+		4FD32103189CB42D00D59683 /* XcodebuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodebuildTask.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FA72FA6189A325E00AFD8B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA72FAD189A325E00AFD8B3 /* Cocoa.framework in Frameworks */,
+				4FA72FE1189A32A100AFD8B3 /* Chime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FA72FC7189A325E00AFD8B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA72FCD189A325E00AFD8B3 /* Cocoa.framework in Frameworks */,
+				4FA72FCC189A325E00AFD8B3 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4FA72FA0189A325E00AFD8B3 = {
+			isa = PBXGroup;
+			children = (
+				4FA72FB2189A325E00AFD8B3 /* Chime Project Indexer */,
+				4FA72FD0189A325E00AFD8B3 /* Chime Project Indexer Tests */,
+				4FA72FAB189A325E00AFD8B3 /* Frameworks */,
+				4FA72FAA189A325E00AFD8B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4FA72FAA189A325E00AFD8B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FA9189A325E00AFD8B3 /* Chime Project Indexer.app */,
+				4FA72FCA189A325E00AFD8B3 /* Chime Project Indexer Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FA72FAB189A325E00AFD8B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FE0189A32A100AFD8B3 /* Chime.framework */,
+				4FA72FAC189A325E00AFD8B3 /* Cocoa.framework */,
+				4FA72FCB189A325E00AFD8B3 /* XCTest.framework */,
+				4FA72FAE189A325E00AFD8B3 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FA72FAE189A325E00AFD8B3 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FAF189A325E00AFD8B3 /* AppKit.framework */,
+				4FA72FB0189A325E00AFD8B3 /* CoreData.framework */,
+				4FA72FB1189A325E00AFD8B3 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4FA72FB2189A325E00AFD8B3 /* Chime Project Indexer */ = {
+			isa = PBXGroup;
+			children = (
+				4F4A668E189B039600695F64 /* IndexDocument.h */,
+				4F4A668F189B039600695F64 /* IndexDocument.m */,
+				4F4A6698189B03EF00695F64 /* IndexDocument.xib */,
+				4FA72FE8189A350B00AFD8B3 /* MainMenu.xib */,
+				4F437687189C323600B35086 /* ChooseSchemeEtcSheetController.h */,
+				4F437688189C323600B35086 /* ChooseSchemeEtcSheetController.m */,
+				4F437684189C274800B35086 /* ChooseSchemeEtcSheet.xib */,
+				4FD32102189CB42D00D59683 /* XcodebuildTask.h */,
+				4FD32103189CB42D00D59683 /* XcodebuildTask.m */,
+				4FA72FEB189A352400AFD8B3 /* Images.xcassets */,
+				4FA72FB3189A325E00AFD8B3 /* Supporting Files */,
+			);
+			name = "Chime Project Indexer";
+			sourceTree = SOURCE_ROOT;
+		};
+		4FA72FB3189A325E00AFD8B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FB4189A325E00AFD8B3 /* Info.plist */,
+				4FA72FE5189A34F400AFD8B3 /* InfoPlist.strings */,
+				4FA72FF0189A35A000AFD8B3 /* main.m */,
+				4FA72FBA189A325E00AFD8B3 /* Prefix.pch */,
+				4FA72FF2189A35BA00AFD8B3 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FA72FD0189A325E00AFD8B3 /* Chime Project Indexer Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FD6189A325E00AFD8B3 /* ChimeProjectIndexerTests.m */,
+				4FA72FD1189A325E00AFD8B3 /* Supporting Files */,
+			);
+			path = "Chime Project Indexer Tests";
+			sourceTree = "<group>";
+		};
+		4FA72FD1189A325E00AFD8B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FA72FD2189A325E00AFD8B3 /* Info.plist */,
+				4FA72FD3189A325E00AFD8B3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4FA72FA8189A325E00AFD8B3 /* Chime Project Indexer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FA72FDA189A325E00AFD8B3 /* Build configuration list for PBXNativeTarget "Chime Project Indexer" */;
+			buildPhases = (
+				4FA72FA5189A325E00AFD8B3 /* Sources */,
+				4FA72FA6189A325E00AFD8B3 /* Frameworks */,
+				4FA72FA7189A325E00AFD8B3 /* Resources */,
+				4FA72FF5189A36C800AFD8B3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chime Project Indexer";
+			productName = ChimeTester;
+			productReference = 4FA72FA9189A325E00AFD8B3 /* Chime Project Indexer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FA72FC9189A325E00AFD8B3 /* Chime Project Indexer Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FA72FDD189A325E00AFD8B3 /* Build configuration list for PBXNativeTarget "Chime Project Indexer Tests" */;
+			buildPhases = (
+				4FA72FC6189A325E00AFD8B3 /* Sources */,
+				4FA72FC7189A325E00AFD8B3 /* Frameworks */,
+				4FA72FC8189A325E00AFD8B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FA72FCF189A325E00AFD8B3 /* PBXTargetDependency */,
+			);
+			name = "Chime Project Indexer Tests";
+			productName = ChimeTesterTests;
+			productReference = 4FA72FCA189A325E00AFD8B3 /* Chime Project Indexer Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4FA72FA1189A325E00AFD8B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Andrew Pontious";
+				TargetAttributes = {
+					4FA72FC9189A325E00AFD8B3 = {
+						TestTargetID = 4FA72FA8189A325E00AFD8B3;
+					};
+				};
+			};
+			buildConfigurationList = 4FA72FA4189A325E00AFD8B3 /* Build configuration list for PBXProject "Chime Project Indexer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4FA72FA0189A325E00AFD8B3;
+			productRefGroup = 4FA72FAA189A325E00AFD8B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4FA72FA8189A325E00AFD8B3 /* Chime Project Indexer */,
+				4FA72FC9189A325E00AFD8B3 /* Chime Project Indexer Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4FA72FA7189A325E00AFD8B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA72FE7189A34F400AFD8B3 /* InfoPlist.strings in Resources */,
+				4FA72FEC189A352400AFD8B3 /* Images.xcassets in Resources */,
+				4FA72FEA189A350B00AFD8B3 /* MainMenu.xib in Resources */,
+				4F4A6696189B03EF00695F64 /* IndexDocument.xib in Resources */,
+				4F437686189C274800B35086 /* ChooseSchemeEtcSheet.xib in Resources */,
+				4FA72FF4189A35BA00AFD8B3 /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FA72FC8189A325E00AFD8B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA72FD5189A325E00AFD8B3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FA72FA5189A325E00AFD8B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F437689189C323600B35086 /* ChooseSchemeEtcSheetController.m in Sources */,
+				4FD32104189CB42D00D59683 /* XcodebuildTask.m in Sources */,
+				4F4A6690189B039600695F64 /* IndexDocument.m in Sources */,
+				4FA72FF1189A35A000AFD8B3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FA72FC6189A325E00AFD8B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA72FD7189A325E00AFD8B3 /* ChimeProjectIndexerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FA72FCF189A325E00AFD8B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FA72FA8189A325E00AFD8B3 /* Chime Project Indexer */;
+			targetProxy = 4FA72FCE189A325E00AFD8B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F437684189C274800B35086 /* ChooseSchemeEtcSheet.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F437685189C274800B35086 /* Base */,
+			);
+			name = ChooseSchemeEtcSheet.xib;
+			sourceTree = "<group>";
+		};
+		4F4A6698189B03EF00695F64 /* IndexDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4A6697189B03EF00695F64 /* Base */,
+			);
+			name = IndexDocument.xib;
+			sourceTree = "<group>";
+		};
+		4FA72FD3189A325E00AFD8B3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FA72FD4189A325E00AFD8B3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4FA72FE5189A34F400AFD8B3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FA72FE6189A34F400AFD8B3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4FA72FE8189A350B00AFD8B3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FA72FE9189A350B00AFD8B3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		4FA72FF2189A35BA00AFD8B3 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FA72FF3189A35BA00AFD8B3 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4FA72FD8189A325E00AFD8B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4FA72FD9189A325E00AFD8B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4FA72FDB189A325E00AFD8B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4FA72FDC189A325E00AFD8B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4FA72FDE189A325E00AFD8B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Chime Project Indexer.app/Contents/MacOS/Chime Project Indexer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Chime Project Indexer Tests/Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4FA72FDF189A325E00AFD8B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Chime Project Indexer.app/Contents/MacOS/Chime Project Indexer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				INFOPLIST_FILE = "Chime Project Indexer Tests/Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FA72FA4189A325E00AFD8B3 /* Build configuration list for PBXProject "Chime Project Indexer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FA72FD8189A325E00AFD8B3 /* Debug */,
+				4FA72FD9189A325E00AFD8B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FA72FDA189A325E00AFD8B3 /* Build configuration list for PBXNativeTarget "Chime Project Indexer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FA72FDB189A325E00AFD8B3 /* Debug */,
+				4FA72FDC189A325E00AFD8B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FA72FDD189A325E00AFD8B3 /* Build configuration list for PBXNativeTarget "Chime Project Indexer Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FA72FDE189A325E00AFD8B3 /* Debug */,
+				4FA72FDF189A325E00AFD8B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4FA72FA1189A325E00AFD8B3 /* Project object */;
+}
