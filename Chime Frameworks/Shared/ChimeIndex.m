@@ -20,7 +20,7 @@
 @property (nonatomic, assign) CXIndex index;
 
 @property (nonatomic) NSMutableArray *translationUnits;
-
+// TODO: rename to more general-purpose symbolsForUSRs.
 @property (nonatomic) NSMutableDictionary *classesForUSRs;
 
 @end
@@ -49,14 +49,11 @@
     // From clang-c/Index.h comments: The index must not be destroyed until all of the translation units created within that index have been destroyed.
     clang_disposeIndex(_index);
 }
-/*
-- (NSString *)description {
-    return [NSString stringWithFormat:<#(NSString *), ...#>]
-}
-*/
+
 #pragma mark Public Methods
 
 - (NSArray *)classes {
+    // TODO: cache this so we're not sorting every time we're called?
     NSArray *classes = [self.classesForUSRs allValues];
     
     return [classes sortedArrayWithOptions:0 usingComparator:^NSComparisonResult(ChimeClass *class1, ChimeClass *class2) {
@@ -67,6 +64,7 @@
 #pragma mark Framework Only Methods
 
 - (void)addTranslationUnit:(ChimeTranslationUnit *)translationUnit {
+    // TODO: check if we've already added it?
     [self.translationUnits addObject:translationUnit];
 }
 
@@ -83,7 +81,6 @@
     NSString *name = [NSString chime_NSStringFromCXString:nameClangString];
     NSString *universalSymbolResolution = [NSString chime_NSStringFromCXString:universalSymbolResolutionClangString];
     
-//    ChimeClass *class = [[ChimeClass alloc] initWithName:name USR:universalSymbolResolution index:self.index];
     ChimeClass *class = [[ChimeClass alloc] initWithName:name USR:universalSymbolResolution index:self];
     self.classesForUSRs[universalSymbolResolution] = class;
     return class;

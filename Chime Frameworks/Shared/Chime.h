@@ -7,6 +7,7 @@
 //  Some right reserved: http://opensource.org/licenses/mit-license.php
 //
 
+#import <Chime/ChimeError.h>
 #import <Chime/ChimeIndex.h>
 #import <Chime/ChimeTranslationUnit.h>
 #import <Chime/ChimeClass.h>

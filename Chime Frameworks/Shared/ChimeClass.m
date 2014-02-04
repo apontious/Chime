@@ -14,7 +14,7 @@
 #pragma mark Public Methods
 
 - (NSString *)userVisibleTypeString {
-    return @"Class";
+    return NSLocalizedStringFromTableInBundle(@"Class", @"Chime", [NSBundle bundleForClass:[self class]], @"User-visible type string for a class.");
 }
 
 @end

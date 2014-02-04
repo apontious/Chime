@@ -1,6 +1,6 @@
 //
 //  ChimeSymbol_Private.h
-//  Chime Mac Framework
+//  Chime Framework
 //
 //  Created by Andrew Pontious on 2/2/14.
 //  Copyright (c) 2014 Andrew Pontious.

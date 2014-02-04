@@ -366,6 +366,7 @@ static NSMutableArray *argumentsFromSingleString(NSString *singleString) {
         
         if ([tu parse:&error] == NO) {
             // TODO: inform user of problem. Stop?
+            NSLog(@"Unable to parse translation unit for file \"%@\": %@", tu.fileURL, error);
             break;
         } else {
             

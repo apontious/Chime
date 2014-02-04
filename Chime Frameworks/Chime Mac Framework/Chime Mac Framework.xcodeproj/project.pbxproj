@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4F4C6E4918A0599100452728 /* ChimeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F4C6E4718A0599100452728 /* ChimeError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F4C6E4A18A0599100452728 /* ChimeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C6E4818A0599100452728 /* ChimeError.m */; };
+		4F4C6E5218A0613D00452728 /* Chime.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F4C6E5418A0613D00452728 /* Chime.strings */; };
 		4FA4AF30189D92010005DA9F /* ChimeIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA4AF2E189D92010005DA9F /* ChimeIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FA4AF31189D92010005DA9F /* ChimeIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4AF2F189D92010005DA9F /* ChimeIndex.m */; };
 		4FA4AF35189D93A30005DA9F /* ChimeTranslationUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FA4AF33189D93A30005DA9F /* ChimeTranslationUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,6 +83,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F4C6E4718A0599100452728 /* ChimeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeError.h; sourceTree = "<group>"; };
+		4F4C6E4818A0599100452728 /* ChimeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimeError.m; sourceTree = "<group>"; };
+		4F4C6E5318A0613D00452728 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = file; name = en; path = en.lproj/Chime.strings; sourceTree = "<group>"; };
 		4FA4AF2E189D92010005DA9F /* ChimeIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeIndex.h; sourceTree = "<group>"; };
 		4FA4AF2F189D92010005DA9F /* ChimeIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimeIndex.m; sourceTree = "<group>"; };
 		4FA4AF33189D93A30005DA9F /* ChimeTranslationUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeTranslationUnit.h; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 				4FA4AF38189DA0290005DA9F /* Chime.h */,
 				4FEC4426189F648C0030FF27 /* NSString+ChimeFramework.h */,
 				4FEC4427189F648C0030FF27 /* NSString+ChimeFramework.m */,
+				4F4C6E4718A0599100452728 /* ChimeError.h */,
+				4F4C6E4818A0599100452728 /* ChimeError.m */,
 				4FA4AF2E189D92010005DA9F /* ChimeIndex.h */,
 				4FA4AF37189D9BD00005DA9F /* ChimeIndex_Private.h */,
 				4FA4AF2F189D92010005DA9F /* ChimeIndex.m */,
@@ -163,7 +171,7 @@
 			children = (
 				4FA4AF32189D920A0005DA9F /* Shared */,
 				4FA72F5E1899D3BF00AFD8B3 /* Chime */,
-				4FA72F731899D3BF00AFD8B3 /* ChimeTests */,
+				4FA72F731899D3BF00AFD8B3 /* Chime Mac Framework Tests */,
 				4FA72F571899D3BF00AFD8B3 /* Frameworks */,
 				4FA72F561899D3BF00AFD8B3 /* Products */,
 			);
@@ -216,17 +224,17 @@
 				4FA72F9B189A30BA00AFD8B3 /* InfoPlist.strings */,
 				4FA72F641899D3BF00AFD8B3 /* Prefix.pch */,
 				4FA72F8A1899DB5F00AFD8B3 /* Copy libclang.sh */,
+				4F4C6E5418A0613D00452728 /* Chime.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4FA72F731899D3BF00AFD8B3 /* ChimeTests */ = {
+		4FA72F731899D3BF00AFD8B3 /* Chime Mac Framework Tests */ = {
 			isa = PBXGroup;
 			children = (
 				4FA72F791899D3BF00AFD8B3 /* ChimeTests.m */,
 				4FA72F741899D3BF00AFD8B3 /* Supporting Files */,
 			);
-			name = ChimeTests;
 			path = "Chime Mac Framework Tests";
 			sourceTree = "<group>";
 		};
@@ -258,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FA4AF39189DA0580005DA9F /* Chime.h in Headers */,
+				4F4C6E4918A0599100452728 /* ChimeError.h in Headers */,
 				4FA4AF30189D92010005DA9F /* ChimeIndex.h in Headers */,
 				4FA4AF35189D93A30005DA9F /* ChimeTranslationUnit.h in Headers */,
 				4FEC4422189F5CDF0030FF27 /* ChimeSymbol.h in Headers */,
@@ -352,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FA72F9D189A30BA00AFD8B3 /* InfoPlist.strings in Resources */,
+				4F4C6E5218A0613D00452728 /* Chime.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +402,7 @@
 				4FEC4423189F5CDF0030FF27 /* ChimeSymbol.m in Sources */,
 				4FA4AF31189D92010005DA9F /* ChimeIndex.m in Sources */,
 				4FA4AF42189DED530005DA9F /* ChimeClass.m in Sources */,
+				4F4C6E4A18A0599100452728 /* ChimeError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +430,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4F4C6E5418A0613D00452728 /* Chime.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4C6E5318A0613D00452728 /* en */,
+			);
+			name = Chime.strings;
+			sourceTree = SOURCE_ROOT;
+		};
 		4FA72F761899D3BF00AFD8B3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

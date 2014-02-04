@@ -1,6 +1,6 @@
 //
 //  ChimeSymbol.m
-//  Chime Mac Framework
+//  Chime Framework
 //
 //  Created by Andrew Pontious on 2/2/14.
 //  Copyright (c) 2014 Andrew Pontious.
@@ -23,7 +23,7 @@
 #pragma mark Standard Methods
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@ %p> %@ %@", [self class], self, self.name, self.USR];
+    return [NSString stringWithFormat:@"<%@ %p> %@ %@ %@", [self class], self, self.userVisibleTypeString, self.name, self.USR];
 }
 
 #pragma mark Framework Only Methods
@@ -43,7 +43,7 @@
 #pragma mark Public Methods
 
 - (NSString *)userVisibleTypeString {
-    return @"Symbol";
+    return NSLocalizedStringFromTableInBundle(@"Symbol", @"Chime", [NSBundle bundleForClass:[self class]], @"User-visible type string for a symbol.");
 }
 
 @end

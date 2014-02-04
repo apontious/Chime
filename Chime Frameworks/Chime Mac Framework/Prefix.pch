@@ -1,9 +1,14 @@
 //
-//  Prefix header
+//  Prefix.pch
+//  Chime Mac Framework
+//
+//  Created by Andrew Pontious on 1/29/14.
+//  Copyright (c) 2014 Andrew Pontious.
+//  Some rights reserved: http://opensource.org/licenses/mit-license.php
 //
 //  The contents of this file are implicitly included at the beginning of every source file.
 //
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+    #import <Foundation/Foundation.h>
 #endif

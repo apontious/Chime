@@ -11,6 +11,8 @@
 
 #import "ChimeIndex_Private.h"
 
+#import <Chime/ChimeError.h>
+
 #import <clang-c/Index.h>
 
 @interface ChimeTranslationUnit ()
@@ -35,16 +37,14 @@
 }
 
 - (void)dealloc {
-    if (_translationUnit != nil) {
-        clang_disposeTranslationUnit(_translationUnit);
-    }
+    clang_disposeTranslationUnit(_translationUnit);
 }
 
 #pragma mark -
 
 - (instancetype)initWithFileURL:(NSURL *)fileURL arguments:(NSArray *)arguments index:(ChimeIndex *)index {
-    NSParameterAssert(index);
     NSParameterAssert(fileURL);
+    NSParameterAssert(index);
     
     self = [super init];
     
@@ -57,14 +57,13 @@
     return self;
 }
 
-- (BOOL)parse:(NSError **)error {
+- (BOOL)parse:(NSError **)outError {
     BOOL result = NO;
     
     // TODO: check we only do this once.
     // TODO: put in threading safeguards.
     
-    //
-    const char *cArguments[[self.arguments count]];
+    const char *cArguments[[self.arguments count]]; // Using stack-based dynamic C arrays for convenience.
     
     for (NSInteger i = 0; i < [self.arguments count]; i++) {
         cArguments[i] = [self.arguments[i] UTF8String];
@@ -79,7 +78,16 @@
                                                       CXTranslationUnit_SkipFunctionBodies);
 
     if (self.translationUnit == nil) {
-        // TODO: fill in NSError
+        // TODO: fill in more NSError keys.
+        NSString *localizedDescription = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The translation unit “%@” failed to parse.", @"Chime", [NSBundle bundleForClass:[self class]], @"Format string for translation unit failed to parse error descripon."), [self.fileURL lastPathComponent]];
+        
+        NSError *error = [NSError errorWithDomain:ChimeErrorDomain
+                                             code:ChimeErrorCodeTranslationUnitParseError
+                                         userInfo:@{NSLocalizedDescriptionKey : localizedDescription}];
+
+        if (*outError != nil) {
+            *outError = error;
+        };
     } else {
         result = YES;
         
@@ -120,6 +128,7 @@
                     class = [self.index createClassForName:name USR:USR];
                     if (class == nil) {
                         // TODO: record error somehow
+                        NSLog(@"Unable to create class for name \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
                     }
                     
                     clang_disposeString(name);

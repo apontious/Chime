@@ -1,11 +1,16 @@
 #!/bin/sh
 
 #  Copy libclang.sh
-#  Chime Mac Framework
+#  Chime Framework
 #
 #  Created by Andrew Pontious on 1/29/14.
 #  Copyright (c) 2014 Andrew Pontious.
 #  Some rights reserved: http://opensource.org/licenses/mit-license.php
+
+#
+#  Copies the libclang.dylib from within Xcode's package into our Chime framework.
+#  This is a (hopefully) short-term hack to avoid the extra work of building clang in our project.
+#
 
 xcodepath="`xcode-select --print-path`"
 
