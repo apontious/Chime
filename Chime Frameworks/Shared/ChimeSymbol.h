@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy, readonly) NSString *name;
 
+@property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *userVisibleTypeString;
 
 @end

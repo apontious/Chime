@@ -99,8 +99,6 @@
 
 - (void)iterateThroughSymbols {
     clang_visitChildrenWithBlock(clang_getTranslationUnitCursor(self.translationUnit), ^enum CXChildVisitResult(CXCursor topLevelDeclCursor, CXCursor parent) {
-        enum CXChildVisitResult result = CXChildVisit_Continue;
-        
         CXSourceRange topLevelDeclRange = clang_getCursorExtent(topLevelDeclCursor);
         CXSourceLocation topLevelDeclLocation = clang_getRangeStart(topLevelDeclRange);
         
@@ -121,7 +119,7 @@
                 
                 CXString USR = clang_getCursorUSR(topLevelDeclCursor);
                 
-                ChimeClass *class = [self.index classForUSR:USR];
+                ChimeClass *class = (ChimeClass *)[self.index symbolForUSR:USR];
                 if (class == nil) {
                     CXString name = clang_getCursorSpelling(topLevelDeclCursor);
                     
@@ -138,14 +136,60 @@
 
             } else if (topLevelDeclKind == CXCursor_ObjCCategoryDecl || topLevelDeclKind == CXCursor_ObjCCategoryImplDecl) {
 
-                // Categories and Class Extensions - TODO
+                // Categories and Class Extensions
                 
+                CXString USR = clang_getCursorUSR(topLevelDeclCursor);
+                
+                __block ChimeCategory *category = (ChimeCategory *)[self.index symbolForUSR:USR];
+                if (category == nil) {
+                    CXString name = clang_getCursorSpelling(topLevelDeclCursor);
+                    
+                    __block ChimeClass *class;
+                    
+                    clang_visitChildrenWithBlock(topLevelDeclCursor, ^enum CXChildVisitResult(CXCursor categoryChildCursor, CXCursor parent) {
+                        const enum CXCursorKind categoryChildKind = clang_getCursorKind(categoryChildCursor);
+                        
+                        if (categoryChildKind != CXCursor_ObjCClassRef) {
+                            // TODO: record error somehow
+                            NSLog(@"Couldn't find initial class reference for category \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
+                        } else {
+                            CXString className = clang_getCursorSpelling(categoryChildCursor);
+                            
+                            // Note: clang_getCursorUSR() returns a blank string here, so we must make the USR manually ourselves.
+                            CXString classUSR = clang_constructUSR_ObjCClass(clang_getCString(className));
+                            
+                            class = (ChimeClass *)[self.index symbolForUSR:classUSR];
+
+                            if (class == nil) {
+                                // TODO: record error somehow
+                                NSLog(@"Unable to find class for name \"%s\", USR \"%s\", when attempting to create category for name \"%s\", USR \"%s\"",
+                                      clang_getCString(className), clang_getCString(classUSR),
+                                      clang_getCString(name), clang_getCString(USR));
+                            }
+
+                            clang_disposeString(className);
+                            clang_disposeString(classUSR);
+                        }
+                        
+                        return CXChildVisit_Break;
+                    });
+                    
+                    if (class != nil) {
+                        category = [self.index createCategoryForName:name USR:USR class:class];
+                        if (category == nil) {
+                            // TODO: record error somehow
+                            NSLog(@"Unable to create category for name \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
+                        }
+                    }
+                    
+                    clang_disposeString(name);
+                }
             }
         }
         
         clang_disposeString(topLevelDeclFilename);
         
-        return result;
+        return CXChildVisit_Continue;
     });
 }
 

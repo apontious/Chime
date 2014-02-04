@@ -23,7 +23,7 @@
 #pragma mark Standard Methods
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@ %p> %@ %@ %@", [self class], self, self.userVisibleTypeString, self.name, self.USR];
+    return [NSString stringWithFormat:@"<%@ %p> %@ %@ [[%@]]", [self class], self, self.userVisibleTypeString, self.name, self.USR];
 }
 
 #pragma mark Framework Only Methods
@@ -42,6 +42,9 @@
 
 #pragma mark Public Methods
 
+- (NSString *)fullName {
+    return self.name;
+}
 - (NSString *)userVisibleTypeString {
     return NSLocalizedStringFromTableInBundle(@"Symbol", @"Chime", [NSBundle bundleForClass:[self class]], @"User-visible type string for a symbol.");
 }

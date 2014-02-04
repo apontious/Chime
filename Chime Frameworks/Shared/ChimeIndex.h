@@ -11,7 +11,7 @@
 
 @interface ChimeIndex : NSObject
 
-@property (nonatomic, readonly) NSArray *classes;
+@property (nonatomic, readonly) NSArray *symbols;
 
 // Designated initializer is init.
 

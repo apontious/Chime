@@ -379,19 +379,19 @@ static NSMutableArray *argumentsFromSingleString(NSString *singleString) {
 #pragma mark NSTableViewDataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [self.index.classes count];
+    return [self.index.symbols count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     id result = nil;
     
-    NSArray *classes = self.index.classes;
+    NSArray *symbols = self.index.symbols;
     
-    if (row < [classes count]) {
-        ChimeSymbol *symbol = classes[row];
+    if (row < [symbols count]) {
+        ChimeSymbol *symbol = symbols[row];
         
         if ([[tableColumn identifier] isEqualToString:@"name"]) {
-            result = symbol.name;
+            result = symbol.fullName;
         } else if ([[tableColumn identifier] isEqualToString:@"type"]) {
             result = symbol.userVisibleTypeString;
         }

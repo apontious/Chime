@@ -11,7 +11,7 @@
 
 #import <clang-c/Index.h>
 
-@class ChimeTranslationUnit, ChimeClass;
+@class ChimeTranslationUnit, ChimeSymbol, ChimeClass, ChimeCategory;
 
 @interface ChimeIndex (Private)
 
@@ -19,7 +19,9 @@
 
 - (void)addTranslationUnit:(ChimeTranslationUnit *)translationUnit;
 
-- (ChimeClass *)classForUSR:(CXString)universalSymbolResolution;
+- (ChimeSymbol *)symbolForUSR:(CXString)universalSymbolResolution;
+
 - (ChimeClass *)createClassForName:(CXString)name USR:(CXString)universalSymbolResolution;
+- (ChimeCategory *)createCategoryForName:(CXString)name USR:(CXString)universalSymbolResolution class:(ChimeClass *)class;
 
 @end

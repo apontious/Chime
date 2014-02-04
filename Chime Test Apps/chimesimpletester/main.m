@@ -40,7 +40,7 @@ int main(int argc, const char * argv[])
                                                                                    index:index];
                 
                 if ([tu parse:nil] == YES) {
-                    NSLog(@"%@", [index classes]);
+                    NSLog(@"%@", [index symbols]);
                 }
             }
         }
