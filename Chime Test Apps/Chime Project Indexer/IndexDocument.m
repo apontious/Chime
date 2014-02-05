@@ -108,14 +108,19 @@
     
     NSWindow *window = [self windowForSheet];
     
+    __weak typeof(self) weakSelf = self;
+    
     [openPanel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
-        if (result == NSFileHandlingPanelCancelButton || [[openPanel URLs] count] == 0) {
-            // TODO: close document
-            NSLog(@"User canceled project/workspace choice.");
-        } else if (result == NSFileHandlingPanelOKButton) {
-            self.projectOrWorkspaceFileURL = [openPanel URLs][0];
+        typeof(self) strongSelf = weakSelf;
+        if (strongSelf != nil) {
+            if (result == NSFileHandlingPanelCancelButton || [[openPanel URLs] count] == 0) {
+                // TODO: close document
+                NSLog(@"User canceled project/workspace choice.");
+            } else if (result == NSFileHandlingPanelOKButton) {
+                strongSelf.projectOrWorkspaceFileURL = [openPanel URLs][0];
 
-            [self handleStage2_determiningSchemesOrProjectTargetsAndConfigurations];
+                [strongSelf handleStage2_determiningSchemesOrProjectTargetsAndConfigurations];
+            }
         }
     }];
 }
@@ -129,44 +134,48 @@
                            (needToDetermineWorkspace ? @"-workspace" : @"-project"),
                            [self.projectOrWorkspaceFileURL lastPathComponent]];
     
+    __weak typeof(self) weakSelf = self;
+    
     [self.xcodebuildTask launchWithArguments:arguments completionHandler:^(NSString *output) {
-        
-        NSError *error;
-        
-        if ([output length] == 0) {
-            // TODO: set error
-            // "Output of xcodebuild, called with ‘-lists’ option, is blank, so project/workspace "X" cannot be indexed."
-            NSLog(@"Output of xcodebuild, called with ‘-lists’ option, is blank, so project/workspace \"%@\" cannot be indexed.", [self.projectOrWorkspaceFileURL lastPathComponent]);
-        } else {
-            self.schemeNames = namesInStringForTitle(output, @"Schemes");
+        typeof(self) strongSelf = weakSelf;
+        if (strongSelf != nil) {
+            NSError *error;
             
-            if (self.isWorkspace) {
-                if (self.schemeNames == nil) {
-                    // TODO: set error
-                    // "Workspace "X" has no schemes and so cannot be indexed."
-                    NSLog(@"Workspace \"%@\" has no schemes and so cannot be indexed.", [self.projectOrWorkspaceFileURL lastPathComponent]);
-                }
-            } else if (self.isProject) {
-                self.projectTargetNames = namesInStringForTitle(output, @"Targets");
-                self.projectConfigurationNames = namesInStringForTitle(output, @"Build Configurations");
+            if ([output length] == 0) {
+                // TODO: set error
+                // "Output of xcodebuild, called with ‘-lists’ option, is blank, so project/workspace "X" cannot be indexed."
+                NSLog(@"Output of xcodebuild, called with ‘-lists’ option, is blank, so project/workspace \"%@\" cannot be indexed.", [strongSelf.projectOrWorkspaceFileURL lastPathComponent]);
+            } else {
+                strongSelf.schemeNames = namesInStringForTitle(output, @"Schemes");
                 
-                if ([self.projectTargetNames count] == 0) {
-                    // TODO: set error
-                    // "Project "X" has no targets and so cannot be indexed."
-                    NSLog(@"Project \"%@\" has no targets and so cannot be indexed.", [self.projectOrWorkspaceFileURL lastPathComponent]);
-                } else if ([self.projectConfigurationNames count] == 0) {
-                    // TODO: set error
-                    // "Project "X" has no build configurations and so cannot be indexed."
-                    NSLog(@"Project \"%@\" has no build configurations and so cannot be indexed.", [self.projectOrWorkspaceFileURL lastPathComponent]);
+                if (strongSelf.isWorkspace) {
+                    if (strongSelf.schemeNames == nil) {
+                        // TODO: set error
+                        // "Workspace "X" has no schemes and so cannot be indexed."
+                        NSLog(@"Workspace \"%@\" has no schemes and so cannot be indexed.", [strongSelf.projectOrWorkspaceFileURL lastPathComponent]);
+                    }
+                } else if (strongSelf.isProject) {
+                    strongSelf.projectTargetNames = namesInStringForTitle(output, @"Targets");
+                    strongSelf.projectConfigurationNames = namesInStringForTitle(output, @"Build Configurations");
+                    
+                    if ([strongSelf.projectTargetNames count] == 0) {
+                        // TODO: set error
+                        // "Project "X" has no targets and so cannot be indexed."
+                        NSLog(@"Project \"%@\" has no targets and so cannot be indexed.", [strongSelf.projectOrWorkspaceFileURL lastPathComponent]);
+                    } else if ([strongSelf.projectConfigurationNames count] == 0) {
+                        // TODO: set error
+                        // "Project "X" has no build configurations and so cannot be indexed."
+                        NSLog(@"Project \"%@\" has no build configurations and so cannot be indexed.", [strongSelf.projectOrWorkspaceFileURL lastPathComponent]);
+                    }
                 }
             }
-        }
 
-        if (error) {
-            // TODO: tell user there was a problem, close document
-            NSLog(@"There was a problem: %@", error);
-        } else {
-            [self handleStage3_choosingSchemeOrProjectTargetAndConfiguration];
+            if (error) {
+                // TODO: tell user there was a problem, close document
+                NSLog(@"There was a problem: %@", error);
+            } else {
+                [strongSelf handleStage3_choosingSchemeOrProjectTargetAndConfiguration];
+            }
         }
     }];
 
@@ -200,20 +209,25 @@ static NSArray *namesInStringForTitle(NSString *string, NSString *title) {
 - (void)handleStage3_choosingSchemeOrProjectTargetAndConfiguration {
     self.chooseSchemeEtcSheetController = [[ChooseSchemeEtcSheetController alloc] init];
     
+    __weak typeof(self) weakSelf = self;
+    
     [self.chooseSchemeEtcSheetController chooseFromSchemeNames:self.schemeNames
                                                    targetNames:self.projectTargetNames
                                             configurationNames:self.projectConfigurationNames
                                                    forDocument:self
                                              completionHandler:^(BOOL didChoose, NSString *chosenSchemeName, NSString *chosenTargetName, NSString *chosenConfigurationName) {
-        if (didChoose == NO) {
-            // TODO: close document
-            NSLog(@"User canceled scheme/target+build configuration choice.");
-        } else {
-            self.chosenSchemeName = chosenSchemeName;
-            self.chosenProjectTargetName = chosenTargetName;
-            self.chosenProjectConfigurationName = chosenConfigurationName;
-            
-            [self handleStage4_determiningCompilationUnitURLS];
+        typeof(self) strongSelf = weakSelf;
+        if (strongSelf != nil) {
+            if (didChoose == NO) {
+                // TODO: close document
+                NSLog(@"User canceled scheme/target+build configuration choice.");
+            } else {
+                strongSelf.chosenSchemeName = chosenSchemeName;
+                strongSelf.chosenProjectTargetName = chosenTargetName;
+                strongSelf.chosenProjectConfigurationName = chosenConfigurationName;
+                
+                [strongSelf handleStage4_determiningCompilationUnitURLS];
+            }
         }
     }];
 }
@@ -248,34 +262,42 @@ static NSArray *namesInStringForTitle(NSString *string, NSString *title) {
     [arguments addObjectsFromArray:[self standardXcodebuildArguments]];
     [arguments addObject:@"clean"];
     
+    __weak typeof(self) weakSelf = self;
+    
     [self.xcodebuildTask launchWithArguments:arguments completionHandler:^(NSString *output) {
-        if ([output rangeOfString:@"** CLEAN SUCCEEDED **"].length == 0) {
-            // TODO: tell user there was a problem, close document
-            NSLog(@"Clean did not succeed.\n%@", output);
-        } else {
-            
-            // Now build and capture the output.
-            NSMutableArray *arguments = [NSMutableArray array];
-            
-            [arguments addObjectsFromArray:[self standardXcodebuildArguments]];
-            [arguments addObjectsFromArray:@[@"build", @"-dry-run"]];
-            
-            [self.xcodebuildTask launchWithArguments:arguments completionHandler:^(NSString *output) {
-                if ([output rangeOfString:@"** BUILD SUCCEEDED **" options:NSBackwardsSearch].length == 0) {
-                    // TODO: tell user there was a problem, close document
-                    NSLog(@"Build did not succeed.\n%@", output);
-                } else {
-                    self.index = [[ChimeIndex alloc] init];
-                    
-                    self.translationUnits = [self translationUnitsFromCompilationOutput:output];
-                    if (self.translationUnits == nil) {
-                        // TODO: tell user there was a problem, close document
-                        NSLog(@"No translation units were found from build output.");
-                    } else {
-                        [self handleStage5_parsingTranslationUnits];
+        typeof(self) strongSelf = weakSelf;
+        if (strongSelf != nil) {
+            if ([output rangeOfString:@"** CLEAN SUCCEEDED **"].length == 0) {
+                // TODO: tell user there was a problem, close document
+                NSLog(@"Clean did not succeed.\n%@", output);
+            } else {
+                
+                // Now build and capture the output.
+                NSMutableArray *arguments = [NSMutableArray array];
+                
+                [arguments addObjectsFromArray:[strongSelf standardXcodebuildArguments]];
+                [arguments addObjectsFromArray:@[@"build", @"-dry-run"]];
+                
+                [strongSelf.xcodebuildTask launchWithArguments:arguments completionHandler:^(NSString *output) {
+                    typeof(self) strongSelf = weakSelf;
+                    if (strongSelf != nil) {
+                        if ([output rangeOfString:@"** BUILD SUCCEEDED **" options:NSBackwardsSearch].length == 0) {
+                            // TODO: tell user there was a problem, close document
+                            NSLog(@"Build did not succeed.\n%@", output);
+                        } else {
+                            strongSelf.index = [[ChimeIndex alloc] init];
+                            
+                            strongSelf.translationUnits = [strongSelf translationUnitsFromCompilationOutput:output];
+                            if (strongSelf.translationUnits == nil) {
+                                // TODO: tell user there was a problem, close document
+                                NSLog(@"No translation units were found from build output.");
+                            } else {
+                                [strongSelf handleStage5_parsingTranslationUnits];
+                            }
+                        }
                     }
-                }
-            }];
+                }];
+            }
         }
     }];
 }

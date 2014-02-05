@@ -96,14 +96,16 @@
 - (void)handleFinished {
     if (self.readFinished == YES && self.taskFinished == YES) {
         NSString *output = self.output;
+        void (^completionHandler)(NSString *) = [self.completionHandler copy];
         
         // Reset for potential next time! Which might be within the completion handler!
         self.task = nil;
         self.output = nil;
         self.readFinished = NO;
         self.taskFinished = NO;
+        self.completionHandler = nil;
 
-        self.completionHandler(output);
+        completionHandler(output);
     }
 }
 
