@@ -24,4 +24,6 @@
 - (ChimeClass *)createClassForName:(CXString)name USR:(CXString)universalSymbolResolution superclass:(ChimeClass *)superclass;
 - (ChimeCategory *)createCategoryForName:(CXString)name USR:(CXString)universalSymbolResolution class:(ChimeClass *)class;
 
+- (BOOL)isNameOfCocoaClassWithoutSuperclass:(CXString)nameClangString;
+
 @end

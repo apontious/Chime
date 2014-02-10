@@ -108,10 +108,16 @@ static ChimeClass *extractClassForCursor(CXCursor cursor,
     __block NSString *errorLogString;
     
     clang_visitChildrenWithBlock(cursor, ^enum CXChildVisitResult(CXCursor childCursor, CXCursor parent) {
+        enum CXChildVisitResult result = CXChildVisit_Break;
+        
         const enum CXCursorKind childKind = clang_getCursorKind(childCursor);
         
         if (childKind != desiredSymbolKind) {
-            errorLogString = [NSString stringWithFormat:@"Couldn't find initial %@ reference for %@ \"%s\", USR \"%s\"", desiredSymbolLabel, creatingClassLabel, clang_getCString(creatingClassName), clang_getCString(creatingClassUSR)];
+            if (childKind == CXCursor_FirstAttr) {
+                result = CXChildVisit_Continue;
+            } else {
+                errorLogString = [NSString stringWithFormat:@"Couldn't find initial %@ reference for %@ \"%s\", USR \"%s\", found %ld instead", desiredSymbolLabel, creatingClassLabel, clang_getCString(creatingClassName), clang_getCString(creatingClassUSR), (long)childKind];
+            }
         } else {
             CXString desiredName = clang_getCursorSpelling(childCursor);
             
@@ -133,7 +139,7 @@ static ChimeClass *extractClassForCursor(CXCursor cursor,
             clang_disposeString(desiredUSR);
         }
         
-        return CXChildVisit_Break;
+        return result;
     });
     
     if (errorLogStringPtr != nil) {
@@ -177,7 +183,7 @@ static ChimeClass *extractClassForCursor(CXCursor cursor,
                                                                    self.index,
                                                                    &errorLogString);
                     
-                    if (superclass == nil && [[NSString chime_NSStringFromCXString:name] isEqualToString:@"NSObject"] == NO) {
+                    if (superclass == nil && [self.index isNameOfCocoaClassWithoutSuperclass:name] == NO) {
                         // TODO: record error somehow
                         NSLog(@"%@", errorLogString);
                     } else {

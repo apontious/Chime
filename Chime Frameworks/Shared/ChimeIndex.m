@@ -105,4 +105,17 @@
     return result;
 }
 
+- (BOOL)isNameOfCocoaClassWithoutSuperclass:(CXString)nameClangString {
+    BOOL result = NO;
+    
+    NSString *name = [NSString chime_NSStringFromCXString:nameClangString];
+    
+    if ([name length] > 0) {
+        NSArray *names = @[@"NSObject", @"NSProxy"];
+        result = [names containsObject:name];
+    }
+    
+    return result;
+}
+
 @end
