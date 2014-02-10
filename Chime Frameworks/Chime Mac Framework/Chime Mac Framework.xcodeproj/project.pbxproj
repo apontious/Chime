@@ -124,6 +124,7 @@
 		4FBD3EA218A0A51900FC0CEF /* ChimeCategory_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChimeCategory_Private.h; sourceTree = "<group>"; };
 		4FBD3EA418A0B01E00FC0CEF /* ChimeClassExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeClassExtension.h; sourceTree = "<group>"; };
 		4FBD3EA518A0B01E00FC0CEF /* ChimeClassExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimeClassExtension.m; sourceTree = "<group>"; };
+		4FEAABEF18A879C300A0F8E4 /* ChimeTranslationUnit_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChimeTranslationUnit_Private.h; sourceTree = "<group>"; };
 		4FEC4420189F5CDF0030FF27 /* ChimeSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeSymbol.h; sourceTree = "<group>"; };
 		4FEC4421189F5CDF0030FF27 /* ChimeSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimeSymbol.m; sourceTree = "<group>"; };
 		4FEC4424189F5D540030FF27 /* ChimeSymbol_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChimeSymbol_Private.h; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				4FA4AF37189D9BD00005DA9F /* ChimeIndex_Private.h */,
 				4FA4AF2F189D92010005DA9F /* ChimeIndex.m */,
 				4FA4AF33189D93A30005DA9F /* ChimeTranslationUnit.h */,
+				4FEAABEF18A879C300A0F8E4 /* ChimeTranslationUnit_Private.h */,
 				4FA4AF34189D93A30005DA9F /* ChimeTranslationUnit.m */,
 				4FEC4420189F5CDF0030FF27 /* ChimeSymbol.h */,
 				4FEC4424189F5D540030FF27 /* ChimeSymbol_Private.h */,

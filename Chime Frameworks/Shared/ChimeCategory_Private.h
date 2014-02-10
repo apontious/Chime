@@ -9,7 +9,7 @@
 
 #import <Chime/ChimeCategory.h>
 
-@class ChimeClass;
+@class ChimeIndex;
 
 @interface ChimeCategory (Private)
 

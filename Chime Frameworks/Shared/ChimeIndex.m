@@ -9,6 +9,7 @@
 
 #import "ChimeIndex_Private.h"
 
+#import "ChimeTranslationUnit_Private.h"
 #import "ChimeSymbol_Private.h"
 #import "ChimeClass_Private.h"
 #import "ChimeCategory_Private.h"
@@ -50,6 +51,11 @@
 
 - (void)dealloc {
     // From clang-c/Index.h comments: The index must not be destroyed until all of the translation units created within that index have been destroyed.
+    // Client may have strong references to translation units, so we must make sure to gut them ourselves.
+    for (ChimeTranslationUnit *translationUnit in _translationUnits) {
+        [translationUnit disposeClangTranslationUnit];
+    }
+    
     clang_disposeIndex(_index);
 }
 

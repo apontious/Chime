@@ -7,7 +7,7 @@
 //  Some rights reserved: http://opensource.org/licenses/mit-license.php
 //
 
-#import "ChimeTranslationUnit.h"
+#import "ChimeTranslationUnit_Private.h"
 
 #import "ChimeIndex_Private.h"
 #import "NSString+ChimeFramework.h"
@@ -31,6 +31,8 @@
 
 @implementation ChimeTranslationUnit
 
+#pragma mark Standard Methods
+
 - (id)init {
     NSAssert(NO, @"Do not call init to create a %@, use %@", [ChimeTranslationUnit class], NSStringFromSelector(@selector(initWithFileURL:arguments:index:)));
     
@@ -41,7 +43,7 @@
     clang_disposeTranslationUnit(_translationUnit);
 }
 
-#pragma mark -
+#pragma mark Public Methods
 
 - (instancetype)initWithFileURL:(NSURL *)fileURL arguments:(NSArray *)arguments index:(ChimeIndex *)index {
     NSParameterAssert(fileURL);
@@ -53,6 +55,8 @@
         _fileURL = [fileURL copy];
         _arguments = [arguments copy];
         _index = index;
+        
+        [_index addTranslationUnit:self];
     }
     
     return self;
@@ -97,6 +101,8 @@
     
     return result;
 }
+
+#pragma mark Private Methods
 
 static ChimeClass *extractClassForCursor(CXCursor cursor,
                                          const enum CXCursorKind desiredSymbolKind, NSString *desiredSymbolLabel,
@@ -237,6 +243,13 @@ static ChimeClass *extractClassForCursor(CXCursor cursor,
         
         return CXChildVisit_Continue;
     });
+}
+
+#pragma mark Framework Only Methods
+
+- (void)disposeClangTranslationUnit {
+    clang_disposeTranslationUnit(self.translationUnit);
+    self.translationUnit = nil;
 }
 
 @end

@@ -7,7 +7,7 @@
 //  Some rights reserved: http://opensource.org/licenses/mit-license.php
 //
 
-#import "ChimeClassExtension.h"
+#import <Chime/ChimeClassExtension.h>
 
 #import "ChimeSymbol_Private.h"
 #import "ChimeClass.h"
