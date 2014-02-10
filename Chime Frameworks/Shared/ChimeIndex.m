@@ -10,7 +10,7 @@
 #import "ChimeIndex_Private.h"
 
 #import "ChimeSymbol_Private.h"
-#import "ChimeClass.h"
+#import "ChimeClass_Private.h"
 #import "ChimeCategory_Private.h"
 #import "ChimeClassExtension.h"
 
@@ -81,11 +81,11 @@
     return nil;
 }
 
-- (ChimeClass *)createClassForName:(CXString)nameClangString USR:(CXString)universalSymbolResolutionClangString {
+- (ChimeClass *)createClassForName:(CXString)nameClangString USR:(CXString)universalSymbolResolutionClangString superclass:(ChimeClass *)superclass {
     NSString *name = [NSString chime_NSStringFromCXString:nameClangString];
     NSString *universalSymbolResolution = [NSString chime_NSStringFromCXString:universalSymbolResolutionClangString];
     
-    ChimeClass *class = [[ChimeClass alloc] initWithName:name USR:universalSymbolResolution index:self];
+    ChimeClass *class = [[ChimeClass alloc] initWithName:name USR:universalSymbolResolution superclass:superclass index:self];
     self.symbolsForUSRs[universalSymbolResolution] = class;
     return class;
 }

@@ -11,3 +11,5 @@
 #import <Chime/ChimeIndex.h>
 #import <Chime/ChimeTranslationUnit.h>
 #import <Chime/ChimeClass.h>
+#import <Chime/ChimeCategory.h>
+#import <Chime/ChimeClassExtension.h>

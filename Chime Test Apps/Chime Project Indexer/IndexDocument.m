@@ -416,6 +416,14 @@ static NSMutableArray *argumentsFromSingleString(NSString *singleString) {
             result = symbol.fullName;
         } else if ([[tableColumn identifier] isEqualToString:@"type"]) {
             result = symbol.userVisibleTypeString;
+        } else if ([[tableColumn identifier] isEqualToString:@"superclass"]) {
+            if ([symbol isKindOfClass:[ChimeClass class]] == YES) {
+                result = ((ChimeClass *)symbol).chimeSuperclass.name;
+            }
+        } else if ([[tableColumn identifier] isEqualToString:@"subclasses"]) {
+            if ([symbol isKindOfClass:[ChimeClass class]] == YES) {
+                result = [[((ChimeClass *)symbol).subclasses valueForKey:@"name"] componentsJoinedByString:@", "];
+            }
         }
     }
     

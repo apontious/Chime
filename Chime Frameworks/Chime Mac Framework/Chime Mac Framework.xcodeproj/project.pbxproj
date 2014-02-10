@@ -48,7 +48,7 @@
 		4FA72F97189A267A00AFD8B3 /* libclang.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4FA72F8B1899E02F00AFD8B3 /* libclang.dylib */; };
 		4FA72F9D189A30BA00AFD8B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FA72F9B189A30BA00AFD8B3 /* InfoPlist.strings */; };
 		4FBD3EA318A0A7D400FC0CEF /* ChimeCategory_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FBD3EA218A0A51900FC0CEF /* ChimeCategory_Private.h */; };
-		4FBD3EA618A0B01E00FC0CEF /* ChimeClassExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FBD3EA418A0B01E00FC0CEF /* ChimeClassExtension.h */; };
+		4FBD3EA618A0B01E00FC0CEF /* ChimeClassExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FBD3EA418A0B01E00FC0CEF /* ChimeClassExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FBD3EA718A0B01E00FC0CEF /* ChimeClassExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD3EA518A0B01E00FC0CEF /* ChimeClassExtension.m */; };
 		4FEC4422189F5CDF0030FF27 /* ChimeSymbol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FEC4420189F5CDF0030FF27 /* ChimeSymbol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FEC4423189F5CDF0030FF27 /* ChimeSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC4421189F5CDF0030FF27 /* ChimeSymbol.m */; };
@@ -88,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F3C46C418A84A120051B755 /* ChimeClass_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChimeClass_Private.h; sourceTree = "<group>"; };
 		4F4C6E4718A0599100452728 /* ChimeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChimeError.h; sourceTree = "<group>"; };
 		4F4C6E4818A0599100452728 /* ChimeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChimeError.m; sourceTree = "<group>"; };
 		4F4C6E5318A0613D00452728 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Chime.strings; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 				4FEC4424189F5D540030FF27 /* ChimeSymbol_Private.h */,
 				4FEC4421189F5CDF0030FF27 /* ChimeSymbol.m */,
 				4FA4AF3F189DED530005DA9F /* ChimeClass.h */,
+				4F3C46C418A84A120051B755 /* ChimeClass_Private.h */,
 				4FA4AF40189DED530005DA9F /* ChimeClass.m */,
 				4F4C6E5518A0710000452728 /* ChimeCategory.h */,
 				4FBD3EA218A0A51900FC0CEF /* ChimeCategory_Private.h */,
@@ -284,10 +286,10 @@
 				4F4C6E4918A0599100452728 /* ChimeError.h in Headers */,
 				4FA4AF30189D92010005DA9F /* ChimeIndex.h in Headers */,
 				4FA4AF35189D93A30005DA9F /* ChimeTranslationUnit.h in Headers */,
-				4FBD3EA618A0B01E00FC0CEF /* ChimeClassExtension.h in Headers */,
 				4FEC4422189F5CDF0030FF27 /* ChimeSymbol.h in Headers */,
 				4FA4AF41189DED530005DA9F /* ChimeClass.h in Headers */,
 				4F4C6E5718A0710000452728 /* ChimeCategory.h in Headers */,
+				4FBD3EA618A0B01E00FC0CEF /* ChimeClassExtension.h in Headers */,
 				4FEC4428189F648C0030FF27 /* NSString+ChimeFramework.h in Headers */,
 				4FA72F941899E13400AFD8B3 /* Index.h in Headers */,
 				4FA72F951899E13400AFD8B3 /* Platform.h in Headers */,

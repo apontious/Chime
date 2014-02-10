@@ -21,7 +21,7 @@
 
 - (ChimeSymbol *)symbolForUSR:(CXString)universalSymbolResolution;
 
-- (ChimeClass *)createClassForName:(CXString)name USR:(CXString)universalSymbolResolution;
+- (ChimeClass *)createClassForName:(CXString)name USR:(CXString)universalSymbolResolution superclass:(ChimeClass *)superclass;
 - (ChimeCategory *)createCategoryForName:(CXString)name USR:(CXString)universalSymbolResolution class:(ChimeClass *)class;
 
 @end

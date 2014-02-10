@@ -10,6 +10,7 @@
 #import "ChimeTranslationUnit.h"
 
 #import "ChimeIndex_Private.h"
+#import "NSString+ChimeFramework.h"
 
 #import <Chime/ChimeError.h>
 
@@ -97,6 +98,51 @@
     return result;
 }
 
+static ChimeClass *extractClassForCursor(CXCursor cursor,
+                                         const enum CXCursorKind desiredSymbolKind, NSString *desiredSymbolLabel,
+                                         NSString *creatingClassLabel, CXString creatingClassName, CXString creatingClassUSR,
+                                         ChimeIndex *index, NSString **errorLogStringPtr) {
+    
+    __block ChimeClass *desiredClass;
+    
+    __block NSString *errorLogString;
+    
+    clang_visitChildrenWithBlock(cursor, ^enum CXChildVisitResult(CXCursor childCursor, CXCursor parent) {
+        const enum CXCursorKind childKind = clang_getCursorKind(childCursor);
+        
+        if (childKind != desiredSymbolKind) {
+            errorLogString = [NSString stringWithFormat:@"Couldn't find initial %@ reference for %@ \"%s\", USR \"%s\"", desiredSymbolLabel, creatingClassLabel, clang_getCString(creatingClassName), clang_getCString(creatingClassUSR)];
+        } else {
+            CXString desiredName = clang_getCursorSpelling(childCursor);
+            
+            // Note: clang_getCursorUSR() returns a blank string here, so we must make the USR manually ourselves.
+            // Currently, what we're creating *must* be a class, because this function only handles classes.
+            CXString desiredUSR = clang_constructUSR_ObjCClass(clang_getCString(desiredName));
+            
+            desiredClass = (ChimeClass *)[index symbolForUSR:desiredUSR];
+            
+            if (desiredClass == nil) {
+                errorLogString = [NSString stringWithFormat:@"Unable to find %@ for name \"%s\", USR \"%s\", when attempting to create %@ for name \"%s\", USR \"%s\"",
+                                  // Symbol we desire
+                                  desiredSymbolLabel, clang_getCString(desiredName), clang_getCString(desiredUSR),
+                                  // Class we're creating
+                                  creatingClassLabel, clang_getCString(creatingClassName), clang_getCString(creatingClassUSR)];
+            }
+            
+            clang_disposeString(desiredName);
+            clang_disposeString(desiredUSR);
+        }
+        
+        return CXChildVisit_Break;
+    });
+    
+    if (errorLogStringPtr != nil) {
+        *errorLogStringPtr = errorLogString;
+    }
+    
+    return desiredClass;
+}
+
 - (void)iterateThroughSymbols {
     clang_visitChildrenWithBlock(clang_getTranslationUnitCursor(self.translationUnit), ^enum CXChildVisitResult(CXCursor topLevelDeclCursor, CXCursor parent) {
         CXSourceRange topLevelDeclRange = clang_getCursorExtent(topLevelDeclCursor);
@@ -122,11 +168,24 @@
                 ChimeClass *class = (ChimeClass *)[self.index symbolForUSR:USR];
                 if (class == nil) {
                     CXString name = clang_getCursorSpelling(topLevelDeclCursor);
+                    NSString *errorLogString;
                     
-                    class = [self.index createClassForName:name USR:USR];
-                    if (class == nil) {
+                    ChimeClass *superclass = extractClassForCursor(topLevelDeclCursor,
+                                                                   CXCursor_ObjCSuperClassRef,
+                                                                   @"superclass", // Class we desire
+                                                                   @"class", name, USR, // Symbol we're creating
+                                                                   self.index,
+                                                                   &errorLogString);
+                    
+                    if (superclass == nil && [[NSString chime_NSStringFromCXString:name] isEqualToString:@"NSObject"] == NO) {
                         // TODO: record error somehow
-                        NSLog(@"Unable to create class for name \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
+                        NSLog(@"%@", errorLogString);
+                    } else {
+                        class = [self.index createClassForName:name USR:USR superclass:superclass];
+                        if (class == nil) {
+                            // TODO: record error somehow
+                            NSLog(@"Unable to create class for name \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
+                        }
                     }
                     
                     clang_disposeString(name);
@@ -143,38 +202,19 @@
                 __block ChimeCategory *category = (ChimeCategory *)[self.index symbolForUSR:USR];
                 if (category == nil) {
                     CXString name = clang_getCursorSpelling(topLevelDeclCursor);
+                    NSString *errorLogString;
                     
-                    __block ChimeClass *class;
+                    ChimeClass *class = extractClassForCursor(topLevelDeclCursor,
+                                                              CXCursor_ObjCClassRef,
+                                                              @"class", // Class we desire
+                                                              @"category", name, USR, // Symbol we're creating
+                                                              self.index,
+                                                              &errorLogString);
                     
-                    clang_visitChildrenWithBlock(topLevelDeclCursor, ^enum CXChildVisitResult(CXCursor categoryChildCursor, CXCursor parent) {
-                        const enum CXCursorKind categoryChildKind = clang_getCursorKind(categoryChildCursor);
-                        
-                        if (categoryChildKind != CXCursor_ObjCClassRef) {
-                            // TODO: record error somehow
-                            NSLog(@"Couldn't find initial class reference for category \"%s\", USR \"%s\"", clang_getCString(name), clang_getCString(USR));
-                        } else {
-                            CXString className = clang_getCursorSpelling(categoryChildCursor);
-                            
-                            // Note: clang_getCursorUSR() returns a blank string here, so we must make the USR manually ourselves.
-                            CXString classUSR = clang_constructUSR_ObjCClass(clang_getCString(className));
-                            
-                            class = (ChimeClass *)[self.index symbolForUSR:classUSR];
-
-                            if (class == nil) {
-                                // TODO: record error somehow
-                                NSLog(@"Unable to find class for name \"%s\", USR \"%s\", when attempting to create category for name \"%s\", USR \"%s\"",
-                                      clang_getCString(className), clang_getCString(classUSR),
-                                      clang_getCString(name), clang_getCString(USR));
-                            }
-
-                            clang_disposeString(className);
-                            clang_disposeString(classUSR);
-                        }
-                        
-                        return CXChildVisit_Break;
-                    });
-                    
-                    if (class != nil) {
+                    if (class == nil) {
+                        // TODO: record error somehow
+                        NSLog(@"%@", errorLogString);
+                    } else {
                         category = [self.index createCategoryForName:name USR:USR class:class];
                         if (category == nil) {
                             // TODO: record error somehow
